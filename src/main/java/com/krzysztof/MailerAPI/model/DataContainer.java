@@ -8,15 +8,17 @@ public class DataContainer {
     private int smtpPort;  /// 465 for gmail
     private int portForSocket;  ///  587 for gmail
     private String host;  //// smtp.gmail.com for gmail
+    private String messageText;
 
     public DataContainer(String senderEmail, String emailPassword, String consumerEmail, int smtpPort,
-                         int portForSocket, String host) {
+                         int portForSocket, String host, String messageText) {
         this.senderEmail = senderEmail;
         this.emailPassword = emailPassword;
         this.consumerEmail = consumerEmail;
         this.smtpPort = smtpPort;
         this.portForSocket = portForSocket;
         this.host = host;
+        this.messageText = messageText;
     }
 
     public String getSenderEmail() {
@@ -65,5 +67,13 @@ public class DataContainer {
 
     public void setHost(String host) {
         this.host = host;
+    }
+
+    public String getMessageText() {
+        return messageText;
+    }
+
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
     }
 }
