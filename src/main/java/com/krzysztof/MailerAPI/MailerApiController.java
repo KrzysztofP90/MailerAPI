@@ -4,6 +4,8 @@ package com.krzysztof.MailerAPI;
 import com.krzysztof.MailerAPI.model.DataContainer;
 import com.krzysztof.MailerAPI.service.MailerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +19,11 @@ public class MailerApiController {
      private MailerService mailerService;
 
     @PostMapping
-    public boolean getJsonDataContainer(@RequestBody DataContainer dataContainer) {
-        return this.mailerService.sendEmail(dataContainer);
+    public ResponseEntity<?> getJsonDataContainer(@RequestBody DataContainer dataContainer) {
+        if (dataContainer.getEmailPassword() == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(mailerService.sendEmail(dataContainer), HttpStatus.OK);
     }
 
 }
