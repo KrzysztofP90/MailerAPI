@@ -23,7 +23,11 @@ public class MailerApiController {
         if (dataContainer.getEmailPassword() == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(mailerService.sendEmail(dataContainer), HttpStatus.OK);
+        boolean status = mailerService.sendEmail(dataContainer);
+        if (status) {
+            return new ResponseEntity<>(status, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(status, HttpStatus.FORBIDDEN);
     }
 
 }
