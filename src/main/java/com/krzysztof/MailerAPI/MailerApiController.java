@@ -1,6 +1,5 @@
 package com.krzysztof.MailerAPI;
 
-
 import com.krzysztof.MailerAPI.model.DataContainer;
 import com.krzysztof.MailerAPI.service.MailerService;
 import org.springframework.beans.factory.annotation.Autowired;
