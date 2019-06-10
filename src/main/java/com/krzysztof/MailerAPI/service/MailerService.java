@@ -25,6 +25,9 @@ public class MailerService {
     }
 
     public boolean sendEmail(DataContainer dataContainer) {
+        DataProvider provider = new DataProvider();
+        dataContainer.setSenderEmail(provider.getEmail());
+        dataContainer.setEmailPassword(provider.getPassword());
         Properties prop = this.getProperties(dataContainer);
         Session session = Session.getInstance(prop, new Authenticator() {
             @Override

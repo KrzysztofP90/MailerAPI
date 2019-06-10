@@ -10,10 +10,8 @@ public class DataContainer {
     private String host;  //// smtp.gmail.com for gmail
     private String messageText;
 
-    public DataContainer(String senderEmail, String emailPassword, String consumerEmail, int smtpPort,
+    public DataContainer(String consumerEmail, int smtpPort,
                          int portForSocket, String host, String messageText) {
-        this.senderEmail = senderEmail;
-        this.emailPassword = emailPassword;
         this.consumerEmail = consumerEmail;
         this.smtpPort = smtpPort;
         this.portForSocket = portForSocket;
